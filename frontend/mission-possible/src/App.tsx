@@ -5,11 +5,9 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0);
-  const [messageFromBackend, setMessageFromBackend] = useState("");
 
-  fetch("http://localhost:8080/api/hello").then(res => res.text()).then(data => {
+  fetch("http://localhost:3001/api/hello").then(res => res.text()).then(data => {
     console.log(data);
-    setMessageFromBackend(data);
   });
 
   return (
@@ -26,7 +24,6 @@ function App() {
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
-          <p>{messageFromBackend}</p>
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR

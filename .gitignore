@@ -1,0 +1,35 @@
+# Node / Vite
+frontend/mission-possible/node_modules
+frontend/mission-possible/dist
+
+# Java / Spring Boot
+backend/target
+*.log
+*.class
+*.jar
+
+# IDEs
+*.idea
+*.vscode
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node / frontend
+node_modules/
+dist/
+.env
+*.log
+
+# Spring Boot / backend
+target/
+*.class
+*.jar
+*.war
+*.iml
+/.idea/
+
+# VS Code
+.vscode/
+
