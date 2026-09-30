@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: mission-possible
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/mission_possible
+    username: mission_possible
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
