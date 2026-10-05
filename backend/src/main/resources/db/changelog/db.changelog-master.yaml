@@ -1,4 +1,4 @@
 databaseChangeLog: 
   - include:
-      file: 001-changelog.sql
+      file: 002-rename-users-updated-at.sql
       relativeToChangelogFile: true
