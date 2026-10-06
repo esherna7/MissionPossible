@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.missionpossible.entity.User;
+import com.missionpossible.exception.DuplicateEmailException;
 
 import jakarta.persistence.EntityManager;
 
@@ -55,7 +56,7 @@ public class UserServiceTest {
         assertTrue(passwordEncoder.matches(rawPassword, retrievedUser.getPasswordHash()));
     }
 
-    @Test 
+    @Test
     public void shouldRejectDuplicateEmail() {
         userService.createUser(
                 "testEmail@test.com",
@@ -63,8 +64,8 @@ public class UserServiceTest {
                 "Esai",
                 "Hernandez");
 
-        IllegalArgumentException exception = assertThrows(
-                IllegalArgumentException.class,
+        DuplicateEmailException exception = assertThrows(
+                DuplicateEmailException.class,
                 () -> userService.createUser(
                         "testEmail@test.com",
                         "password123",
@@ -74,7 +75,7 @@ public class UserServiceTest {
         assertEquals("Email is already registered", exception.getMessage());
     }
 
-    @Test 
+    @Test
     public void shouldFindUserByEmail() {
         User savedUser = userService.createUser(
                 "testEmail@test.com",

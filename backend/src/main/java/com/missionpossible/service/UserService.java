@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.missionpossible.entity.User;
+import com.missionpossible.exception.DuplicateEmailException;
 import com.missionpossible.repository.UserRepository;
 
 @Service
@@ -26,7 +27,7 @@ public class UserService {
     @Transactional
     public User createUser(String email, String rawPassword, String firstName, String lastName) {
         if (userRepository.findByEmail(email).isPresent()) {
-            throw new IllegalArgumentException("Email is already registered");
+            throw new DuplicateEmailException();
         }
 
         User userToSave = new User();
